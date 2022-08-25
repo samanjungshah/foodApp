@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block index %}
+Profile
+
+
+{% endblock index %}
+
+{% block content %}
+
+    <h1>{{user.username}}</h1>
+    <img height='100px' src="{{ user.profile.img.url }}" alt="">
+
+{% endblock content %}
+
+
+
+
+
+

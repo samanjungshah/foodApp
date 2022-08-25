@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Home page
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+   <div class="row">
+     {% for item in item_list  %}
+     <div class="col mt-3">
+        <div class="card" style="width: 18rem;">
+           <img src="{{item.img}}" height="150px" width='150px' class="card-img-top" alt="...">
+        
+           <div class="card-body">
+              <h5 class="card-title">{{item.item_name}}</h5>
+              <p class="card-text">{{item.item_desc}}</p>
+              <p class="card-text">NPR: {{item.item_price}}</p>
+              <a href="{% url 'food:detail' item.id %}" class='btn btn-success'>Details</a>
+              <a href="{% url 'food:update' item.id %}" class='btn btn-success'>Update</a>
+              <a href="{% url 'food:delete' item.id %}" class='btn btn-danger'>Delete</a>
+           </div>
+         </div>
+        
+     
+     </div>
+     {% endfor %}
+  
+   </div>
+
+  </div>
+{% endblock content %}
+
+
+
+
+
+
+
+

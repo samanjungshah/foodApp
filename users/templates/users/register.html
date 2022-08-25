@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block customCss %}
+
+{% endblock customCss %}
+
+
+{% block index %}
+    Registration
+
+{% endblock index %}
+
+
+
+
+
+
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" class = 'btn btn-success'value="Sign Up">
+
+
+</form>
+
+
+{% endblock content %}
+
+
+
+
+
