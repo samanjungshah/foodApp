@@ -4,13 +4,97 @@ Fill Form
 
 {% endblock title %}
 {% block content %}
-<div class="container mt-4">
 
+<div class="container mt-4">
+    
     <form action="" method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Save</button>
+        {{form.errors}}
+        <section class="vh-100" style="background-color: #A77979">
+            <div class="container h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-9">
+          
+                  <h1 class="text-white mb-4">Add a Item</h1>
+          
+                  <div class="card" style="border-radius: 15px;">
+                    <div class="card-body">
+          
+     
+                      <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Item name</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" name='item_name' class="form-control form-control-lg" />
+          
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+                      <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Item Description</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" name='item_desc' class="form-control form-control-lg" />
+          
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+                      <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Item price</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="number" name='item_price' class="form-control form-control-lg" />
+          
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+                      <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Image Link</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" name='img'  class="form-control form-control-lg" value='https://cdn.dribbble.com/users/1012566/screenshots/4187820/media/985748436085f06bb2bd63686ff491a5.jpg?compress=1&resize=400x300&vertical=top' />
+          
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+          
+           
+         
+          
+                      <div class="px-5 py-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Add Item</button>
+                      </div>
+          
+                    </div>
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+          </section>
     </form>
+
+
 </div>
 
 

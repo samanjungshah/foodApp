@@ -6,7 +6,8 @@ from .models import Item
 from .forms import ItemForm
 from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import UpdateView,DeleteView
+from django.views.generic import UpdateView,DeleteView,ListView,DetailView,CreateView
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -18,6 +19,11 @@ def index(request):
     }
     return render(request,'food/index.html',context=context)
 
+class HomePage(ListView):
+    model = Item
+    template_name = 'food/index.html'
+    context_object_name = 'item_list'
+
 
 
 def item(request):
@@ -28,6 +34,11 @@ def detail(request,pk):
     item = Item.objects.get(pk=pk)
     context = {'item':item}
     return render(request,'food/detail.html',context=context)
+
+class ItemDetailView(DetailView):
+    model = Item
+    template_name = 'food/detail.html'
+    
 
 
 def create_item(request):
@@ -47,6 +58,16 @@ def create_item(request):
         form = ItemForm()
 
     return render(request, 'food/item_form.html', {'form': form})
+
+class ItemCreateView(CreateView):
+    model = Item
+    fields = ['item_name','item_desc','item_price','img']
+    template_name = 'food/item_form.html'
+    def form_valid(self,form):
+        form.instance.user_name = self.request.user
+        return super().form_valid(form)
+    
+    
 
 
 class ItemUpdateView(LoginRequiredMixin,UpdateView):
